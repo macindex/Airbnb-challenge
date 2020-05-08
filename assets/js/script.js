@@ -2,7 +2,7 @@ const apiUrl = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72";
 
 // Selecionar o elemento HTML
 
-const cardsCounteudo = document.querySelector("#cards");
+const cardsConteudo = document.querySelector("#cards");
 
 let data = [];
 
@@ -19,7 +19,7 @@ async function buscarCards() {
 // Mapear e gerar cada card
 
 function gerarCards(cards) {
-  cardsCounteudo.innerHTML = "";
+  cardsConteudo.innerHTML = "";
   cards.map(renderCard);
 }
 
@@ -48,7 +48,7 @@ function renderCard(card) {
   div.appendChild(firstP);
   div.appendChild(secondP);
 
-  cardsCounteudo.appendChild(div);
+  cardsConteudo.appendChild(div);
 }
 
 // Função principal
