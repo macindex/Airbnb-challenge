@@ -277,14 +277,14 @@ body {
 }
 
 .card-price {
-  color: #2F4F4F;
+  color: #778899;
 }
 
 footer {
   bottom: 0;
   padding: 0px;
   width: 100%;
-  background-color: #778899 /*#BEBEBE #D3D3D3#62b837*/;
+  background-color: #778899;
   display: flex;
   justify-content: space-between;
   align-items: center;
