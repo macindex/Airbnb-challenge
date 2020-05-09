@@ -1,12 +1,12 @@
 const apiUrl = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72";
 
-// Selecionar o elemento HTML
+
 
 const cardsConteudo = document.querySelector("#cards");
 
 let data = [];
 
-//Buscar os dados na api
+
 
 async function buscarCards() {
   let resposta = await fetch(apiUrl);
@@ -16,14 +16,14 @@ async function buscarCards() {
   return dataResposta;
 }
 
-// Mapear e gerar cada card
+
 
 function gerarCards(cards) {
   cardsConteudo.innerHTML = "";
   cards.map(renderCard);
 }
 
-// Gerar o card
+
 
 function renderCard(card) {
   var div = document.createElement("div");
@@ -51,7 +51,7 @@ function renderCard(card) {
   cardsConteudo.appendChild(div);
 }
 
-// Função principal
+
 
 async function main() {
   data = await buscarCards();
@@ -63,13 +63,12 @@ async function main() {
 
 main();
 
-// Ordenar cards
 
 function ordernarCrescente() {
   data.sort(function (a, b) {
     return a.name > b.name ? 1 : b.name > a.name ? -1 : 0;
   });
-  //gerar cards com ordenacao
+
   gerarCards(data);
 }
 
@@ -77,7 +76,7 @@ function ordernarDecrescente() {
   data.sort(function (a, b) {
     return a.name < b.name ? 1 : b.name < a.name ? -1 : 0;
   });
-  //gerar cards com ordenacao
+
   gerarCards(data);
 }
 
@@ -85,7 +84,7 @@ function ordernarMenorPreco() {
   data.sort(function (a, b) {
     return a.price > b.price ? 1 : b.price > a.price ? -1 : 0;
   });
-  //gerar cards com ordenacao
+
   gerarCards(data);
 }
 
@@ -93,24 +92,24 @@ function ordernarMaiorPreco() {
   data.sort(function (a, b) {
     return a.price < b.price ? 1 : b.price < a.price ? -1 : 0;
   });
-  //gerar cards com ordenacao
+
   gerarCards(data);
 }
 
-// Filtrar pelo nome
+
 function handleSearch() {
-  //Pega o valor do input e converte para Upper
+  
   let valueInput = document.querySelector("#searchInput").value.toUpperCase();
-  //Busca os valores em data e realiza um filter neles
+  
   const filteredResults = data.filter((places) => {
-    //converte todos os name para Upper
+  
     const placesToSearchByName = places.name.toUpperCase();
-    //Verifica se tem valores iguais (compara o name com o input)
+  
     if (placesToSearchByName.search(valueInput) > -1) {
-      //se tiver, retorna o array para o filter
+  
       return places;
     }
   });
-  // se houver dados no array de comparacao, gera os cards.
+  
   gerarCards(filteredResults);
 }
